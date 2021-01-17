@@ -12,9 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.ccba.inertie.Api.model.canniste.Licence;
 import org.ccba.inertie.Api.model.pedagogie.ExerciceTag;
 
 import lombok.Getter;
@@ -29,22 +31,21 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Session {
+public class Club {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private Date dateCreation;
 	
-	private int nombre;
+	private String nom;
 	
-	private int nbNouveaux;
+	private String sigle;
 	
-	@ManyToMany
-	private Set<SessionTag> tags;
+	private String nomUsage;
 	
-	@ManyToOne
-	private Club club;
+	@OneToMany(mappedBy = "club")
+	private Set<Licence> licencies;
 }
