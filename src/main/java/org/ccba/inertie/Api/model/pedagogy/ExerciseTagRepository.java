@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ccba.inertie.Api.model.pedagogie;
+package org.ccba.inertie.Api.model.pedagogy;
 
 import org.ccba.inertie.Api.model.club.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +12,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  */
 @RepositoryRestResource
-public interface ExerciceRepository extends JpaRepository<Exercice, Long>  {
+public interface ExerciseTagRepository extends JpaRepository<ExerciseTag, Long>  {
 
 }

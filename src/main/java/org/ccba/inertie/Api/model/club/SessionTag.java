@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@CrudTableReflexion(routeName = "sessionTags")
 public class SessionTag {
 	
 	@Id
@@ -31,7 +34,7 @@ public class SessionTag {
 	private Long id;
 	
 	@Column(unique=true)
-	private String nom;
+	private String name;
 	
 	@ManyToMany(mappedBy = "tags")
 	private Set<Session> sessions;

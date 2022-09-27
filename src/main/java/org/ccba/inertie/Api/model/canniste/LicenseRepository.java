@@ -12,6 +12,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  */
 @RepositoryRestResource
-public interface LicenceRepository extends JpaRepository<Licence, Long>  {
+public interface LicenseRepository extends JpaRepository<License, Long>  {
 
 }

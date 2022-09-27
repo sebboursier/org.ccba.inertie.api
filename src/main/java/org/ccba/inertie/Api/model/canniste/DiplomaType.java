@@ -1,23 +1,20 @@
 /**
  * 
  */
-package org.ccba.inertie.Api.model.club;
+package org.ccba.inertie.Api.model.canniste;
 
-import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.ccba.inertie.Api.model.canniste.License;
-import org.ccba.inertie.Api.model.pedagogy.ExerciseTag;
+import org.ccba.inertie.Api.reflexion.CrudFieldReflexion;
+import org.ccba.inertie.Api.reflexion.CrudFieldType;
 import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
@@ -32,22 +29,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@CrudTableReflexion(routeName = "clubs")
-public class Club {
+@CrudTableReflexion(routeName = "diplomaTypes")
+public class DiplomaType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date creationDate;
-	
+	@Column(unique = true)
+	@CrudFieldReflexion
 	private String name;
 	
-	private String acronym;
+	@CrudFieldReflexion
+	private String description;
 	
-	private String useName;
+	@ManyToMany
+	@CrudFieldReflexion(type = CrudFieldType.TO_MANY)
+	private Set<DiplomaType> requiredDiplomas;
 	
-	@OneToMany(mappedBy = "club")
-	private Set<License> licensees;
+	@OneToMany(mappedBy = "diplomaType")
+	private Set<Diploma> deliveredDiplomas;
 }

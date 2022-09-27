@@ -1,18 +1,18 @@
 /**
  * 
  */
-package org.ccba.inertie.Api.model.canniste;
+package org.ccba.inertie.Api.model.pedagogy;
 
-import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToMany;
+
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,18 +26,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Diplome {
-
+@CrudTableReflexion(routeName = "exerciseTags")
+public class ExerciseTag {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	private Canniste canniste;
+	@Column(unique=true)
+	private String name;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
-	
-	@ManyToOne
-	private DiplomeType diplomeType;
+	@ManyToMany(mappedBy = "tags")
+	private Set<Exercise> exercises;
 }

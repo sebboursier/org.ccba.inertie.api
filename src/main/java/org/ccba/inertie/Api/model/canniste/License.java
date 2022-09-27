@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.ccba.inertie.Api.model.club.Club;
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,13 +29,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Licence {
+@CrudTableReflexion(routeName = "licenses")
+public class License {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String numero;
+	private String number;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;

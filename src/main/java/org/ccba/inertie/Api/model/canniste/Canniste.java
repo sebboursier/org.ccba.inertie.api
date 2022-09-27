@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.ccba.inertie.Api.model.club.Club;
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,33 +30,34 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@CrudTableReflexion(routeName = "cannistes")
 public class Canniste {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nom;
+	private String lastName;
 	
-	private String prenom;
+	private String firstName;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateDeNaissance;
+	private Date birthDate;
 	
-	private String lieuDeNaissance;
+	private String birthPlace;
 	
-	private String adresse;
+	private String address;
 	
-	private String codePostal;
+	private String postalcode;
 	
-	private String ville;
+	private String city;
 	
-	private String mail;
+	private String email;
 	
-	private String telephone;
+	private String phoneNumber;
 	
 	private Boolean sexe;
 	
 	@OneToMany(mappedBy = "canniste")
-	private Set<Licence> Licences;
+	private Set<License> licenses;
 }

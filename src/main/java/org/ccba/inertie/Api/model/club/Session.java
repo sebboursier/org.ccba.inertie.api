@@ -15,7 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.ccba.inertie.Api.model.pedagogie.ExerciceTag;
+import org.ccba.inertie.Api.model.pedagogy.ExerciseTag;
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@CrudTableReflexion(routeName = "sessions")
 public class Session {
 
 	@Id
@@ -38,9 +40,9 @@ public class Session {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	private int nombre;
+	private int number;
 	
-	private int nbNouveaux;
+	private int nbNew;
 	
 	@ManyToMany
 	private Set<SessionTag> tags;

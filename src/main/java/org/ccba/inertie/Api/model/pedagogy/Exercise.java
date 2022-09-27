@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ccba.inertie.Api.model.pedagogie;
+package org.ccba.inertie.Api.model.pedagogy;
 
 import java.util.Set;
 
@@ -14,6 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.UniqueConstraint;
+
+import org.ccba.inertie.Api.reflexion.CrudTableReflexion;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,23 +30,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Exercice {
+@CrudTableReflexion(routeName = "exercises")
+public class Exercise {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique=true)
-	private String nom;
+	@Column(unique = true)
+	private String name;
 	
 	@Enumerated(EnumType.STRING)
-	private ExerciceType type;
+	private ExerciseType type;
 	
 	@Column(columnDefinition = "TEXT")
 	private String description;
 
 	@ManyToMany
-	private Set<ExerciceTag> tags;
+	private Set<ExerciseTag> tags;
 	
-	int nombreMinimum;
+	int MinimumNb;
 }

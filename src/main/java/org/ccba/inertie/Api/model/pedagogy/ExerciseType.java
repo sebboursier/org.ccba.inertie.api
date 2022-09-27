@@ -1,13 +1,13 @@
 /**
  * 
  */
-package org.ccba.inertie.Api.model.pedagogie;
+package org.ccba.inertie.Api.model.pedagogy;
 
 /**
  * @author Awaceb04
  *
  */
-public enum ExerciceType {
+public enum ExerciseType {
 	
 	Echauffement,
 	

@@ -3,25 +3,22 @@
  */
 package org.ccba.inertie.Api.reflexion;
 
-import java.util.List;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author Awaceb04
+ * @author Dakeyras
  *
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class CrudTable {
+public class CrudField {
 	
 	private String name;
 	
-	private String routeName;
-	
-	private List<CrudField> columns;
-	
+	private CrudFieldType type;
 }
